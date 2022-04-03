@@ -1,29 +1,29 @@
 {
   "PhoneAsItem": {
-    "enabled": false,
-    "exportResource": "my-core-resource",
-    "exportFunction": "myCheckerFunction"
+    "enabled": true,
+    "exportResource": "ava_core",
+    "exportFunction": "hasPhoneItem"
   },
   "general": {
-    "useResourceIntegration": false,
+    "useResourceIntegration": true,
     "toggleKey": "f1",
     "toggleCommand": "phone",
-    "defaultLanguage": "en"
+    "defaultLanguage": "fr"
   },
   "profanityFilter": {
     "enabled": false,
     "badWords": ["esx"]
   },
   "database": {
-    "useIdentifierPrefix": false,
-    "playerTable": "users",
-    "identifierColumn": "identifier",
+    "useIdentifierPrefix": true,
+    "playerTable": "ava_players",
+    "identifierColumn": "license",
     "identifierType": "license",
     "profileQueries": true,
     "phoneNumberColumn": "phone_number"
   },
   "debug": {
-    "level": "error",
+    "level": "silly",
     "enabled": true,
     "sentryEnabled": true
   }
