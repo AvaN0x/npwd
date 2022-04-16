@@ -24,13 +24,13 @@
     },
     {
       "label": "Défaut",
-      "value": "Défaut.jpg"
+      "value": "default.jpg"
     }
   ],
   "frames": [
     {
       "label": "Défaut",
-      "value": "Défaut.png"
+      "value": "default.png"
     },
     {
       "label": "Bleu",
@@ -181,8 +181,8 @@
   ],
   "defaultSettings": {
     "language": {
-      "label": "Français",
-      "value": "fr"
+      "label": "English",
+      "value": "en"
     },
     "callVolume": 50,
     "iconSet": {
