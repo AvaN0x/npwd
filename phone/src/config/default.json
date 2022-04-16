@@ -1,6 +1,6 @@
 {
-  "cellProvider": "AT&T",
-  "defaultLanguage": "en",
+  "cellProvider": "ADZ",
+  "defaultLanguage": "fr",
   "wallpapers": [
     {
       "label": "Minimal",
@@ -23,21 +23,21 @@
       "value": "npwd2020.png"
     },
     {
-      "label": "Default",
-      "value": "default.jpg"
+      "label": "Défaut",
+      "value": "Défaut.jpg"
     }
   ],
   "frames": [
     {
-      "label": "Default",
-      "value": "default.png"
+      "label": "Défaut",
+      "value": "Défaut.png"
     },
     {
-      "label": "Blue",
+      "label": "Bleu",
       "value": "blue.png"
     },
     {
-      "label": "Gold",
+      "label": "Or",
       "value": "gold.png"
     },
     {
@@ -45,15 +45,15 @@
       "value": "kawaii.png"
     },
     {
-      "label": "Minimal",
+      "label": "Minimaliste",
       "value": "minimal.png"
     },
     {
-      "label": "Pink",
+      "label": "Rose",
       "value": "pink.png"
     },
     {
-      "label": "White",
+      "label": "Blanc",
       "value": "white.png"
     }
   ],
@@ -171,18 +171,18 @@
   ],
   "notiFilters": [
     {
-      "label": "All Tweets",
+      "label": "Tous les tweets",
       "value": "all"
     },
     {
-      "label": "Only Mentions",
+      "label": "Juste les mentions",
       "value": "mentions"
     }
   ],
   "defaultSettings": {
     "language": {
-      "label": "English",
-      "value": "en"
+      "label": "Français",
+      "value": "fr"
     },
     "callVolume": 50,
     "iconSet": {
@@ -198,7 +198,7 @@
     },
     "customWallpaper": "",
     "frame": {
-      "label": "Default",
+      "label": "Défaut",
       "value": "default.png"
     },
     "theme": {
@@ -221,7 +221,7 @@
     "ringtoneVol": 50,
     "notiSoundVol": 50,
     "TWITTER_notiFilter": {
-      "label": "All Tweets",
+      "label": "Tous les tweets",
       "value": "all"
     },
     "TWITTER_notiSound": {
@@ -233,7 +233,7 @@
     "MARKETPLACE_notifyNewListing": true
   },
   "appSettings": {
-    "browserHomePage": "https://docs.projecterror.dev"
+    "browserHomePage": "https://top-serveurs.net/gta/vote/adezourp"
   },
   "iconSet": [
     {
