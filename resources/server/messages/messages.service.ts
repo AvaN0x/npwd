@@ -118,6 +118,9 @@ class _MessagesService {
         }
       }
     } catch (err) {
+      messagesLogger.error(
+        `Error occurred on creating message conversation (${reqObj.source}), Error: ${err.message}`,
+      );
       resp({ status: 'error', errorMsg: err.message });
     }
   }
@@ -287,15 +290,46 @@ class _MessagesService {
     const { senderNumber, targetNumber, message } = dto;
 
     try {
-      const senderPlayer = await PlayerService.getIdentifierByPhoneNumber(senderNumber, true);
+      // this will post an error message if the number doesn't exist but emitMessage will so go through from roleplay number
+      const senderPlayer = await PlayerService.getIdentifierFromPhoneNumber(senderNumber, true);
 
-      const participantIdentifier = await PlayerService.getIdentifierByPhoneNumber(targetNumber);
+      const participantIdentifier = await PlayerService.getIdentifierFromPhoneNumber(targetNumber);
       const participantPlayer = PlayerService.getPlayerFromIdentifier(participantIdentifier);
 
       // Create our groupId hash
       const conversationList = createGroupHashID([senderNumber, targetNumber]);
-      // Get our conversationId
-      const conversationId = await this.messagesDB.getConversationId(conversationList);
+
+      const doesConversationExist = await this.messagesDB.doesConversationExist(conversationList);
+      let conversationId: number;
+
+      // Generate conversation id or assign from existing conversation
+      // If we generate the conversation we add the player and update their front-end if they're online
+      if (!doesConversationExist) {
+        conversationId = await this.messagesDB.createConversation(
+          [senderNumber, targetNumber],
+          conversationList,
+          '',
+          false,
+        );
+
+        await this.messagesDB.addParticipantToConversation(conversationList, targetNumber);
+
+        if (participantPlayer) {
+          emitNetTyped<MessageConversation>(
+            MessageEvents.CREATE_MESSAGE_CONVERSATION_SUCCESS,
+            {
+              id: conversationId,
+              conversationList,
+              label: '',
+              isGroupChat: false,
+              participant: targetNumber,
+            },
+            participantPlayer.source,
+          );
+        }
+      } else {
+        conversationId = await this.messagesDB.getConversationId(conversationList);
+      }
 
       const messageId = await this.messagesDB.createMessage({
         message,
