@@ -5,6 +5,7 @@ export interface Message {
   author: string;
   is_embed?: boolean;
   embed?: any;
+  createdAt: number;
 }
 
 export interface PreDBMessage {
@@ -125,6 +126,7 @@ export interface EmitMessageExportCtx {
   senderNumber: string;
   targetNumber: string;
   message: string;
+  embed?: any;
 }
 
 export enum MessageEvents {

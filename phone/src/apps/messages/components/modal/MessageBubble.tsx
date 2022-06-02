@@ -11,6 +11,7 @@ import MessageBubbleMenu from './MessageBubbleMenu';
 import { useSetSelectedMessage } from '../../hooks/state';
 import MessageEmbed from '../ui/MessageEmbed';
 import { useContactActions } from '../../../contacts/hooks/useContactActions';
+import dayjs from 'dayjs';
 
 const useStyles = makeStyles((theme) => ({
   mySms: {
@@ -89,7 +90,12 @@ export const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
         {!isMine ? <Avatar src={getContact()?.avatar} /> : null}
         <Paper className={isMine ? classes.mySms : classes.sms} variant="outlined">
           {message.is_embed ? (
-            <MessageEmbed type={parsedEmbed.type} embed={parsedEmbed} isMine={isMine} />
+            <MessageEmbed
+              type={parsedEmbed.type}
+              embed={parsedEmbed}
+              isMine={isMine}
+              message={message.message}
+            />
           ) : (
             <StyledMessage>
               {isImage(message.message) ? (
@@ -111,6 +117,9 @@ export const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
               {getContact()?.display ?? message.author}
             </Typography>
           )}
+          <Typography mt={2} fontSize={12}>
+            {dayjs.unix(message.createdAt).fromNow()}
+          </Typography>
         </Paper>
       </Box>
       <MessageBubbleMenu open={menuOpen} handleClose={() => setMenuOpen(false)} />
